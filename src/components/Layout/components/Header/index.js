@@ -1,16 +1,45 @@
 import React from 'react';
 import styles from "./Header.module.scss"
 import classNames from "classnames/bind";
-const  cx = classNames.bind(styles)
+import images from "../../../../assets/images";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleXmark, faMagnifyingGlass, faSpinner} from "@fortawesome/free-solid-svg-icons";
+
+const cx = classNames.bind(styles)
+console.log(images.logo)
 
 function Header(props) {
-  return (
-    <header className={cx("wrapper")}>
+  return (<header className={cx("wrapper")}>
       <div className={cx("inner")}>
+        <div className={cx("logo")}>
+          <img src={images.logo} alt=""/>
+
+        </div>
+        <div className={cx("search")}>
+          <input
+            placeholder={"search accounts and videos"}
+            type="text"
+          />
+          <button className={cx("clear")}>
+          {/*  clear*/}
+            <FontAwesomeIcon icon={faCircleXmark}/>
+
+          </button>
+          <FontAwesomeIcon className={cx("loading")} icon={faSpinner}/>
+        {/*  Loading*/}
+          <button className={cx("search-btn")}>
+            <FontAwesomeIcon icon={faMagnifyingGlass}/>
+          {/*  search*/}
+          </button>
+
+        </div>
+        <div className={cx("action")}>
+
+        </div>
+
 
       </div>
-    </header>
-  );
+    </header>);
 }
 
 export default Header;
