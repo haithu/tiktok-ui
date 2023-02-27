@@ -45,19 +45,23 @@
 
   }
   input:not(:placeholder-shown) ~ .search-btn {
+    // ~ Adjacent Sibling Selector
     color: rgba(22, 24, 35, 0.75);
 
   }
   &::after{
+    //::after creates a pseudo-element that is the last child of the selected element.
     content: "";
     position: absolute;
     right: var(--search-button-width);
     width: 1px;
+    height: calc(var(--search-height) - var(--search-top-space) * 2);
 
-    top: calc(var(--search-height) - var(--search-top-space) * 2);
+    top: var(--search-top-space);
     background-color: rgba(22, 24, 35, 0.12);
   }
   &:focus-within{
+    //The :focus-within CSS pseudo-class matches an element if the element or any of its descendants are focused.
     border-color:  rgba(22, 24, 35, 0.2);
   }
 
@@ -68,6 +72,7 @@
   right: calc(var(--search-button-width) + 16px);
   top: 50%;
   transform: translateY(-50%);
+  // the translate translate the element -50% the height of the element which lead to a result the element's position is in the middle
   color: rgba(22, 24, 35, 0.34);
 
 
@@ -86,6 +91,7 @@
     background-color: rgb(22, 24, 35, 0.03);
   }
   &:active {
+    //The :active CSS pseudo-class represents an element (such as a button) that is being activated by the user.
     background-color: rgba(22, 24, 35, 0.06);
   }
 
