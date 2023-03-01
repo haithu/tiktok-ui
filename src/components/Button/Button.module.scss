@@ -1,0 +1,88 @@
+.wrapper {
+  display: inline-flex;
+  //
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  padding: 9px 16px;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: var(--white);
+  border: 1px solid transparent;
+  + .wrapper{
+    margin-left: 8px;
+  //  what is this
+  }
+  & .disabled {
+  //  write in here to let the style in here prioritize others
+    pointer-events: none;
+    opacity: 0.5;
+    user-select: none;
+
+
+  }
+}
+.icon + .title,
+.title + .icon {
+  margin-left: 8px;
+}
+.icon {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+
+}
+.rounded {
+// the style write later is  priotizer
+  border-radius: 999px;
+  // this is a trick to make rounded edges (take a large number value to border-radius)
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  border-color: rgba(22, 24, 35, .12);
+  &:hover{
+    border-color: rgba(22, 24, 35, .2);
+    background-color: rgba(255, 255, 255, 1);
+
+  }
+
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+
+  &:hover {
+    border-color: var(--primary);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #FE2C55;
+    //background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),#FE2C55;
+  }
+}
+.outline{
+  color: var(--primary);
+  border-color: currentColor ;
+
+  &:hover {
+    border-color: currentColor ;
+    background-color: rgba(254, 44, 85, 0.06);
+
+  }
+
+}
+
+.text {
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.small {
+  min-width: 88px;
+  padding: 4px 16px;
+
+}
+.large {
+  padding: 14px 16px;
+  min-width: 140px;
+}
