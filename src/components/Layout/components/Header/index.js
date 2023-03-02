@@ -4,11 +4,11 @@ import classNames from "classnames/bind";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faCircleQuestion,
-  faCircleXmark,
+  faCircleXmark, faCloudUpload, faCoins,
   faEarthAsia,
-  faEllipsisVertical, faKeyboard,
-  faMagnifyingGlass,
-  faSpinner
+  faEllipsisVertical, faGear, faKeyboard,
+  faMagnifyingGlass, faMessage, faSignOut,
+  faSpinner, faUser
 } from "@fortawesome/free-solid-svg-icons";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -26,28 +26,78 @@ const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faEarthAsia}/>,
     title: "English",
+    children: {
+      title: "language",
+      data: [
+        {
+          type: "language",
+          code: "en",
+          title: "english"
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "vietnamese"
+        }
+      ]
+    }
 
   },
   {
     icon: <FontAwesomeIcon icon={faCircleQuestion}/>,
     title: "Feedback and help",
-    to: "./feedback"
+    // to: "./feedback"
 
   },
   {
     icon: <FontAwesomeIcon icon={faKeyboard}/>,
-    title: "Keyboad shortcuts"
-
+    title: "Keyboard shortcuts"
   }
 
 ]
 
 function Header(props) {
+  const currentUser = true;
+
 
   useEffect(() => {
 
 
   }, [])
+  const handleMenuChange = (menuItem) => {
+    console.log(menuItem)
+  }
+  const userMenu = [
+
+    {
+      icon: <FontAwesomeIcon icon={faUser}/>,
+      title: "View Profile",
+      to: "./feedback"
+
+    },
+    {
+      icon: <FontAwesomeIcon icon={faCoins}/>,
+      title: "Get coins",
+      to: "./feedback"
+
+    },
+    {
+      icon: <FontAwesomeIcon icon={faGear}/>,
+      title: "Setting",
+      to: "./feedback"
+
+    },
+    ...MENU_ITEMS,
+    {
+      icon: <FontAwesomeIcon icon={faSignOut}/>,
+      title: "Log out",
+      to: "./feedback",
+      separate: true,
+
+    }
+
+
+  ]
   return (<header className={cx("wrapper")}>
     <div className={cx("inner")}>
       <div className={cx("logo")}>
@@ -56,7 +106,7 @@ function Header(props) {
       </div>
       <Tippy
         interactive={true}
-        // animation={false}
+        animation={false}
 
         render={attrs => (
 
@@ -93,21 +143,50 @@ function Header(props) {
 
         </div>
       </Tippy>
-
       <div className={cx("action")}>
-        <Button text>Upload</Button>
-        <Button primary>Log in</Button>
+
+        {currentUser ? (
+          <>
+            <Tippy
+            content={"upload video"}
+            placement={"bottom"}>
+            <div className={cx("current-user")}>
+              <button className={cx("action-btn")}>
+                <FontAwesomeIcon icon={faCloudUpload}/>
+              </button>
 
 
-        <Menu items={MENU_ITEMS}>
-          <button className={cx("more-btn")}>
-            <FontAwesomeIcon icon={faEllipsisVertical}/>
-          </button>
+            </div>
+          </Tippy>
+          </>
+
+        ) : (
+
+          <>
+            <Button text>Upload</Button>
+            <Button primary>Log in</Button>
+
+
+          </>
+
+
+        )}
+
+        <Menu items={currentUser? userMenu: MENU_ITEMS} onChange={handleMenuChange}>
+          {currentUser ? (
+            <img
+              className={cx("user-avatar")}
+              src="https://assets.teenvogue.com/photos/605e098ee06add019cb8de70/16:9/w_2560%2Cc_limit/HERA%2520BLACKPINK%2520JENNIE%2520CAMPAIGN%25209.jpg"
+              alt=""/>
+
+          ) : (
+            <button className={cx("more-btn")}>
+              <FontAwesomeIcon icon={faEllipsisVertical}/>
+            </button>
+
+          )}
         </Menu>
-
-
       </div>
-
 
     </div>
   </header>);
