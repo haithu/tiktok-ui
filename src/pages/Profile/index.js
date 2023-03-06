@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Following(props) {
+function Profile(props) {
   return (
-    <div>Following</div>
+    <div>Profile</div>
   );
 }
 
-export default Following
+export default Profile

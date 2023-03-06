@@ -3,22 +3,22 @@ import styles from "./Header.module.scss"
 import classNames from "classnames/bind";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-  faCircleQuestion,
-  faCircleXmark, faCloudUpload, faCoins,
+  faCircleQuestion, faCoins,
   faEarthAsia,
   faEllipsisVertical, faGear, faKeyboard,
-  faMagnifyingGlass, faMessage, faSignOut,
-  faSpinner, faUser
+   faSignOut
+  , faUser
 } from "@fortawesome/free-solid-svg-icons";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-
-import {Wrapper as PopperWrapper} from "../../../Popper";
 import images from "../../../../assets/images";
-import AccountItem from "../../../AccountItem";
+
 import Button from "../../../Button";
 import Menu from "../../../Popper/Menu";
+import {MessageIcon} from "../../../Icons";
+import Image from "../../../Image";
+import Search from "../Search";
 
 const cx = classNames.bind(styles)
 console.log(images.logo)
@@ -57,13 +57,11 @@ const MENU_ITEMS = [
 ]
 
 function Header(props) {
+
   const currentUser = true;
 
 
-  useEffect(() => {
 
-
-  }, [])
   const handleMenuChange = (menuItem) => {
     console.log(menuItem)
   }
@@ -104,55 +102,18 @@ function Header(props) {
         <img src={images.logo} alt=""/>
 
       </div>
-      <Tippy
-        interactive={true}
-        animation={false}
-
-        render={attrs => (
-
-          <div className={cx('search-result')} tabIndex={-1} {...attrs}>
-            <PopperWrapper>
-              <h4 className={cx("search-title")}>Accounts</h4>
-              <AccountItem/>
-              <AccountItem/>
-              <AccountItem/>
-              <AccountItem/>
-            </PopperWrapper>
-          </div>
-
-        )}
-      >
-        <div className={cx("search")}>
-          <input
-            placeholder={"search accounts and videos"}
-            type="text"
-          />
-          <button className={cx("clear")}>
-            {/*  clear*/}
-            <FontAwesomeIcon icon={faCircleXmark}/>
-
-          </button>
-          <FontAwesomeIcon className={cx("loading")} icon={faSpinner}/>
-          {/*  Loading*/}
-
-          <button className={cx("search-btn")}>
-            <FontAwesomeIcon icon={faMagnifyingGlass}/>
-            {/*  search*/}
-          </button>
-
-
-        </div>
-      </Tippy>
+      {/*search*/}
+      <Search/>
       <div className={cx("action")}>
 
         {currentUser ? (
           <>
             <Tippy
-            content={"upload video"}
+            content={"Inbox"}
             placement={"bottom"}>
             <div className={cx("current-user")}>
               <button className={cx("action-btn")}>
-                <FontAwesomeIcon icon={faCloudUpload}/>
+                <MessageIcon/>
               </button>
 
 
@@ -174,7 +135,7 @@ function Header(props) {
 
         <Menu items={currentUser? userMenu: MENU_ITEMS} onChange={handleMenuChange}>
           {currentUser ? (
-            <img
+            <Image
               className={cx("user-avatar")}
               src="https://assets.teenvogue.com/photos/605e098ee06add019cb8de70/16:9/w_2560%2Cc_limit/HERA%2520BLACKPINK%2520JENNIE%2520CAMPAIGN%25209.jpg"
               alt=""/>
