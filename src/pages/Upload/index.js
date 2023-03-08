@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "../../components/Layout/DefaultLayout/HeaderOnly";
+import Header from "../../layouts/DefaultLayout/HeaderOnly";
 
 function Home(props) {
   return (

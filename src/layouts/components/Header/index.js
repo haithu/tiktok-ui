@@ -12,15 +12,15 @@ import {
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-import images from "../../../../assets/images";
+import images from "../../../assets/images";
 
-import Button from "../../../Button";
-import Menu from "../../../Popper/Menu";
-import {MessageIcon} from "../../../Icons";
-import Image from "../../../Image";
+import Button from "../../../components/Button";
+import Menu from "../../../components/Popper/Menu";
+import {MessageIcon} from "../../../components/Icons";
+import Image from "../../../components/Image";
 import Search from "../Search";
 import {Link} from "react-router-dom";
-import routesConfig from "../../../../config/routes";
+import routesConfig from "../../../config/routes";
 
 
 const cx = classNames.bind(styles)

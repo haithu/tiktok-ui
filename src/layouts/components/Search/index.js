@@ -1,14 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
 
-import {Wrapper as PopperWrapper} from "../../../Popper";
-import AccountItem from "../../../AccountItem";
+import {Wrapper as PopperWrapper} from "../../../components/Popper";
+import AccountItem from "../../../components/AccountItem";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark, faMagnifyingGlass, faSpinner} from "@fortawesome/free-solid-svg-icons";
 import Tippy from "@tippyjs/react";
 import classNames from "classnames/bind";
 import style from "./Search.module.scss"
-import useDebounce from "../../../../hooks/useDebounce";
-import * as searchService from "../../../../apiServices/searchService";
+import useDebounce from "../../../hooks/useDebounce";
+import * as searchService from "../../../services/searchService";
 
 
 const cx = classNames.bind(style)
