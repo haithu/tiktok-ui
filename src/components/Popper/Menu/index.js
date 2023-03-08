@@ -9,7 +9,7 @@ import Header from "./Header";
 const cx = classNames.bind(style)
 const defaultFn = () => {}
 
-function Menu({children, items = [], onChange = defaultFn()}) {
+function Menu({children, items = [], hideOnClick = false, onChange = defaultFn(), ...passProps}) {
   const [history, setHistory] = useState([{data: items}])
   const current = history[history.length - 1]
 
@@ -38,11 +38,15 @@ function Menu({children, items = [], onChange = defaultFn()}) {
   }
   return (
     <Tippy
+      {...passProps}
+      // the reason why you pass the passprops at the start of the div
+      // is to let your additional props can't override the old one if they have the same name
       interactive
       offset={[12, 10]}
       delay={[0, 700]}
       placement={"bottom-end"}
       animation={false}
+      hideOnClick={hideOnClick}
       render={attrs => (
 
         <div className={cx('menu-list')} tabIndex={-1} {...attrs}>
@@ -50,7 +54,7 @@ function Menu({children, items = [], onChange = defaultFn()}) {
             {history.length > 1 && <Header title={"language"} onBack={() => {
               setHistory(pre => pre.slice(0, pre.length -1))
             }}/>}
-            {renderItems()}
+            <div className={cx("menu-body")}>{renderItems()}</div>
 
 
           </PopperWrapper>
@@ -58,6 +62,7 @@ function Menu({children, items = [], onChange = defaultFn()}) {
 
       )}
       onHide={() => setHistory(pre => pre.slice(0, 1))}
+
     >
 
       {children}

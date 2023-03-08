@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Upload(props) {
+function Home(props) {
   return (
-    <div>Upload</div>
+    <h2>Home</h2>
   );
 }
 
-export default Upload
+export default Home

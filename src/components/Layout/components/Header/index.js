@@ -19,6 +19,9 @@ import Menu from "../../../Popper/Menu";
 import {MessageIcon} from "../../../Icons";
 import Image from "../../../Image";
 import Search from "../Search";
+import {Link} from "react-router-dom";
+import routesConfig from "../../../../config/routes";
+
 
 const cx = classNames.bind(styles)
 console.log(images.logo)
@@ -38,7 +41,68 @@ const MENU_ITEMS = [
           type: "language",
           code: "vi",
           title: "vietnamese"
-        }
+        },
+        {
+          type: "language",
+          code: "en",
+          title: "english"
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "vietnamese"
+        },
+        {
+          type: "language",
+          code: "en",
+          title: "english"
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "vietnamese"
+        },
+        {
+          type: "language",
+          code: "en",
+          title: "english"
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "vietnamese"
+        },
+        {
+          type: "language",
+          code: "en",
+          title: "english"
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "vietnamese"
+        },
+        {
+          type: "language",
+          code: "en",
+          title: "english"
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "vietnamese"
+        },
+        {
+          type: "language",
+          code: "en",
+          title: "english"
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "vietnamese"
+        },
+
       ]
     }
 
@@ -99,7 +163,7 @@ function Header(props) {
   return (<header className={cx("wrapper")}>
     <div className={cx("inner")}>
       <div className={cx("logo")}>
-        <img src={images.logo} alt=""/>
+        <Link to={routesConfig.home} className={cx("logo-link")}><img src={images.logo} alt=""/></Link>
 
       </div>
       {/*search*/}
@@ -133,7 +197,7 @@ function Header(props) {
 
         )}
 
-        <Menu items={currentUser? userMenu: MENU_ITEMS} onChange={handleMenuChange}>
+        <Menu items={currentUser? userMenu: MENU_ITEMS} onChange={handleMenuChange} hideOnClick>
           {currentUser ? (
             <Image
               className={cx("user-avatar")}

@@ -3,11 +3,16 @@
   --search-height: 46px;
   --search-top-space: 9px;
   --search-button-width: 52px;
-  height: var(--default-layout-header-height, 60px);
-  box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
   display: flex;
   justify-content: center;
+  height: var(--default-layout-header-height, 60px);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
+  background-color: var(--white);
+  width: 100%;
 
 
 }
@@ -25,6 +30,9 @@
 
 .logo {
 
+}
+.logo-link {
+  display: flex;
 }
 
 
