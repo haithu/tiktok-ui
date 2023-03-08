@@ -166,6 +166,7 @@ function Header(props) {
         <Link to={routesConfig.home} className={cx("logo-link")}><img src={images.logo} alt=""/></Link>
 
       </div>
+
       {/*search*/}
       <Search/>
       <div className={cx("action")}>

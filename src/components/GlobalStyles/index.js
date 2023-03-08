@@ -1,10 +1,14 @@
 import React from 'react';
 import "./GlobalStyles.scss"
+import PropTypes from "prop-types";
 
-function Index({ children }) {
+function GlobalStyles({ children }) {
   return (
     children
   );
 }
+GlobalStyles.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
-export default Index;
+export default GlobalStyles;
